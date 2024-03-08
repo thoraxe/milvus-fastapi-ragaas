@@ -1,0 +1,8 @@
+llama-index
+fastapi
+llama-index-vector-stores-milvus
+llama-index-llms-azure-openai
+llama-index-embeddings-huggingface
+python-dotenv
+langchain
+langchain_openai
