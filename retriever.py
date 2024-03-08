@@ -27,7 +27,10 @@ Settings.llm = llm
 Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 
 vector_store = MilvusVectorStore(
-    uri="http://localhost:19530", dim=384, collection_name="openshift"
+    token=os.environ["MILVUS_AUTH_TOKEN"],
+    uri=f"http://{os.environ['MILVUS_SERVICE_HOSTNAME']}:19530",
+    dim=384, 
+    collection_name="openshift"
 )
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 index = VectorStoreIndex.from_vector_store(vector_store=vector_store, storage_context=storage_context)

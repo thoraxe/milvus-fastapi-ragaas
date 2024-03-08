@@ -8,8 +8,6 @@ from fastapi import FastAPI
 
 from pydantic import BaseModel
 
-from IPython import embed
-
 load_dotenv()
 
 from langchain_openai import AzureOpenAI
@@ -47,7 +45,7 @@ app = FastAPI()
 @app.post("/query")
 def user_query(user_query: UserQuery):
   # call the retriever to fetch nodes (llamaindex terminology) based on the query
-  r = requests.post('http://localhost:8000/query', json={"query": user_query.query})
+  r = requests.post(f"http://{os.environ["RETRIEVER_SERVICE_NAME"]}:8000/query", json={"query": user_query.query})
 
   # TODO: error handling
   nodes = r.json()["nodes"]
