@@ -1,0 +1,5 @@
+*.env
+ocp-product-docs-plaintext
+data
+milvus
+__pycache__
